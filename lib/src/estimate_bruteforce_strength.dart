@@ -14,12 +14,10 @@ double estimateBruteforceStrength(String password) {
   } else if (RegExp(r'^[a-z0-9]*$').hasMatch(password)) {
     charsetBonus = 1.2;
   } else if (RegExp(r'^[a-zA-Z]*$').hasMatch(password)) {
+    charsetBonus = 1.2;
+  } else if (password.length == 8 && RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$').hastMatch(password)) {
     charsetBonus = 1.3;
-  } else if (RegExp(r'^[a-z\-_!?]*$').hasMatch(password)) {
-    charsetBonus = 1.3;
-  } else if (RegExp(r'^[a-zA-Z0-9]*$').hasMatch(password)) {
-    charsetBonus = 1.5;
-  } else {
+  } else if (password.length > 8 && RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$').hastMatch(password)) {
     charsetBonus = 1.8;
   }
 
